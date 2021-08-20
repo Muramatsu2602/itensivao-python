@@ -1,2 +1,2 @@
-# Intensivão Python
-Python Bootcamp offered by "Hashtag Programação"
+# Python Self-study
+Bootcamps, courses, books and all things Python 🐍

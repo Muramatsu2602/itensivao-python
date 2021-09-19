@@ -14,3 +14,8 @@ def marketCapClass(market_cap):
     else:
         val = 'Erro: Veja se você não preencheu algum argumento de forma equivocada.'
     return val
+
+
+
+val = marketCapClass(int(input("Hey there: ")))
+print(val)

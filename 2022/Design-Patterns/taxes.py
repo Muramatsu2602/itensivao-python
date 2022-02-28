@@ -1,8 +1,15 @@
-def ISS_calc(budget):
-
-    return budget.value() * 0.1
+from matplotlib.pyplot import cla
 
 
-def ICMS_calc(budget):
+class ISS(object):
 
-    return budget.value() * 0.06
+    def calc(budget):
+
+        return budget.value() * 0.1
+
+
+class ICMS(object):
+
+    def calc(budget):
+
+        return budget.value() * 0.06

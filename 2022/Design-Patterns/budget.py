@@ -1,11 +1,38 @@
 class Budget(object):
 
-    def __init__(self, value):  # __ private
+    def __init__(self):  # __ private
+        self.__items = []
+
+    @property
+    def value(self):
+        total = 0.0
+        for item in self.__items:
+            total += item.value
+
+        return self.__value
+
+    def get_items(self):
+
+        return tuple(self.__items)
+
+    @property
+    def num_items(self):
+        return len(self.__items)
+
+    def add_item(self, item):
+        self.__items.append(item)
+
+
+class Item(object):
+
+    def __init__(self, name, value):
+        self.__name = name
         self.__value = value
 
+    @property
     def value(self):
         return self.__value
 
-
-budget = Budget(500)
-budget.value = 200
+    @property
+    def name(self):
+        return self.__name

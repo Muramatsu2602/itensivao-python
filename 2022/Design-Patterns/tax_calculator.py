@@ -1,11 +1,11 @@
-from taxes import ISS_calc, ICMS_calc
+from taxes import ISS, ICMS
 
 
 class Tax_calculator(object):
 
     def tax_calc(self, budget, tax):
 
-        tax_sum = tax(budget)
+        tax_sum = tax.calc(budget)
 
         print(tax_sum)
 
@@ -18,4 +18,5 @@ if __name__ == '__main__':
 
     budget = Budget(500)
 
-    calculator.tax_calc(budget, ISS_calc)
+    calculator.tax_calc(budget, ISS)
+    calculator.tax_calc(budget, ICMS)

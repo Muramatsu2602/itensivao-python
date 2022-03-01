@@ -1,13 +1,11 @@
-from discounts import Discount_for_five_items, Discount_for_more_than_five_hundred_dollars
+from discounts import Discount_for_five_items, Discount_for_more_than_five_hundred_dollars, No_discount
 
 
 class Discount_calculator:
 
     def calc(self, budget):
-
-        discount = Discount_for_five_items.calc()
-        if discount == 0:
-            discount = Discount_for_more_than_five_hundred_dollars.calc()
+        discount = Discount_for_five_items(
+            Discount_for_more_than_five_hundred_dollars(No_discount())).calc(budget)
 
         return discount
 

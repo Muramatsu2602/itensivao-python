@@ -1,14 +1,15 @@
+from discounts import Discount_for_five_items, Discount_for_more_than_five_hundred_dollars
 
 
 class Discount_calculator:
 
     def calc(self, budget):
 
-        if budget.num_items > 5:
-            return budget.value * 0.1
+        discount = Discount_for_five_items.calc()
+        if discount == 0:
+            discount = Discount_for_more_than_five_hundred_dollars.calc()
 
-        elif budget.value > 500:
-            return budget.value * 0.07
+        return discount
 
 
 if __name__ == '__main__':

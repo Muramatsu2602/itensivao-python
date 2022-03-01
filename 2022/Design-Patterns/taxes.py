@@ -1,5 +1,6 @@
-from matplotlib.pyplot import cla
-from sqlalchemy import false
+from abc import ABCMeta, abstractmethod
+
+__metaclass__ = ABCMeta  # so-called 'magic attribute'
 
 
 class Conditional_tax_template(object):
@@ -10,6 +11,18 @@ class Conditional_tax_template(object):
             return self.max_taxation(budget)
         else:
             return self.min_taxation(budget)
+
+    @abstractmethod
+    def must_use_taxation(budget):
+        pass
+
+    @abstractmethod
+    def max_taxation(budget):
+        pass
+
+    @abstractmethod
+    def min_taxation(budget):
+        pass
 
 
 class ISS(object):
@@ -26,7 +39,7 @@ class ICMS(object):
         return budget.value * 0.06
 
 
-class ICPP(object):
+class ICPP(Conditional_tax_template):
 
     def calc(self, budget):
 
@@ -36,7 +49,7 @@ class ICPP(object):
             return budget.value * 0.05
 
 
-class IKCV(object):
+class IKCV(Conditional_tax_template):
 
     def calc(self, budget):
 

@@ -9,7 +9,7 @@ class Budget(object):
         for item in self.__items:
             total += item.value
 
-        return self.__value
+        return total
 
     def get_items(self):
 

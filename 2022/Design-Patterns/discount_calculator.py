@@ -14,10 +14,10 @@ if __name__ == '__main__':
 
     from budget import Budget, Item
 
-    budget = Budget()
-    budget.add_item(Item('ITEM - 1', 100))
-    budget.add_item(Item('ITEM - 2', 50))
-    budget.add_item(Item('ITEM - 2', 400))
+    # budget = Budget()
+    # budget.add_item(Item('ITEM - 1', 100))
+    # budget.add_item(Item('ITEM - 2', 50))
+    # budget.add_item(Item('ITEM - 2', 400))
 
     discount_calc = Discount_calculator()
     discount = discount_calc.calc(budget)

@@ -41,21 +41,18 @@ class ICMS(object):
 
 class ICPP(Conditional_tax_template):
 
-    def calc(self, budget):
+    def must_use_taxation(budget):
 
         if budget.value > 500:
-            return budget.value * 0.07
+            return True
         else:
-            return budget.value * 0.05
-
-    def must_use_taxation(budget):
-        pass
+            return False
 
     def max_taxation(budget):
-        pass
+        return budget.value * 0.07
 
     def min_taxation(budget):
-        pass
+        return budget.value * 0.05
 
 
 class IKCV(Conditional_tax_template):

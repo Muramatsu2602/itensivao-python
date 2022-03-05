@@ -1,4 +1,4 @@
-from taxes import ISS, ICMS
+from taxes import ISS, ICMS, ICPP, IKCV
 
 
 class Tax_calculator(object):
@@ -12,11 +12,17 @@ class Tax_calculator(object):
 
 if __name__ == '__main__':
 
-    from budget import Budget
+    from budget import Budget, Item
 
     calculator = Tax_calculator()
 
-    budget = Budget(500)
+    budget = Budget()
+    budget.add_item(Item('Item 1', 50))
+    budget.add_item(Item('Item 2', 200))
+    budget.add_item(Item('Item 3', 245))
 
-    calculator.tax_calc(budget, ISS)
-    calculator.tax_calc(budget, ICMS)
+
+    tax_list = [ISS, ICMS, ICPP, IKCV]
+
+    for tax in tax_list:
+        calculator.tax_calc(budget, tax)

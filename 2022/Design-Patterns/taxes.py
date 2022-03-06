@@ -1,15 +1,31 @@
 from abc import ABCMeta, abstractmethod
 
-__metaclass__ = ABCMeta  # so-called 'magic attribute'
+
+class Tax(object):
+
+    def __init__(self, other_tax=None):
+        self.__other_tax = other_tax
+
+    def calc_other_tax(self, budget):
+        if self.__other_tax is None:
+            return 0
+        else:
+            return self.__other_tax.calc(budget)
+
+    @abstractmethod
+    def calc(self, budget):
+        pass
 
 
-class Conditional_tax_template(object):
+class Conditional_tax_template(Tax):
+
+    __metaclass__ = ABCMeta  # so-called 'magic attribute'
 
     def calc(self, budget):
         if self.must_use_taxation(budget):
-            return self.max_taxation(budget)
+            return self.max_taxation(budget) + self.calc_other_tax(budget)
         else:
-            return self.min_taxation(budget)
+            return self.min_taxation(budget) + self.calc_other_tax(budget)
 
     @abstractmethod
     def must_use_taxation(self, budget):
@@ -24,16 +40,16 @@ class Conditional_tax_template(object):
         pass
 
 
-class ISS(object):
+class ISS(Tax):
 
     def calc(self, budget):
-        return budget.value * 0.1
+        return budget.value * 0.1 + + self.calc_other_tax(budget)
 
 
-class ICMS(object):
+class ICMS(Tax):
 
     def calc(self, budget):
-        return budget.value * 0.06
+        return budget.value * 0.06 + self.calc_other_tax(budget)
 
 
 class ICPP(Conditional_tax_template):

@@ -21,8 +21,9 @@ if __name__ == '__main__':
     budget.add_item(Item('Item 2', 200))
     budget.add_item(Item('Item 3', 245))
 
+    # tax_list = [ISS, ICMS, ICPP, IKCV]
 
-    tax_list = [ISS, ICMS, ICPP, IKCV]
+    # for tax in tax_list:
+    #     calculator.tax_calc(budget, tax)
 
-    for tax in tax_list:
-        calculator.tax_calc(budget, tax)
+    calculator.tax_calc(budget, ICPP(IKCV()))

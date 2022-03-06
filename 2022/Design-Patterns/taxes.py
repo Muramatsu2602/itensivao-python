@@ -40,8 +40,15 @@ class Conditional_tax_template(Tax):
         pass
 
 
+def IPVX(method_or_function):
+    def wrapper(self, budget):
+        return method_or_function(self, budget) + 50.0
+    return wrapper
+
+
 class ISS(Tax):
 
+    @IPVX
     def calc(self, budget):
         return budget.value * 0.1 + + self.calc_other_tax(budget)
 

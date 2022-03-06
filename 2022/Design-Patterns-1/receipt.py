@@ -18,7 +18,7 @@ class Item(object):
 
 class Receipt(object):
 
-    def __init__(self, company_name, cnpj, items, emission_date, details):
+    def __init__(self, company_name, cnpj, items, emission_date=date.today(), details=''):
         self.__company_name = company_name
         self.__cnpj = cnpj
         self.__emission_date = emission_date
@@ -58,5 +58,10 @@ if __name__ == '__main__':
 
     ]
 
-    receipt = Receipt('My Company Ltd', '0123183102381',
-                      items, date.today(), '')
+    # REMEMBER = optional parameters go LAST
+    receipt = Receipt(cnpj='0123183102381',
+                      company_name='My Company Ltd',
+                      items=items,
+                      emission_date=date.today(),
+                      details=''
+                      )

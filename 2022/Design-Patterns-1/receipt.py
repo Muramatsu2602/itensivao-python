@@ -58,6 +58,10 @@ if __name__ == '__main__':
 
     ]
 
+    from receipt_creator import Receipt_creator
+
+
+
     # REMEMBER = optional parameters go LAST
     receipt = Receipt(cnpj='0123183102381',
                       company_name='My Company Ltd',
@@ -65,3 +69,5 @@ if __name__ == '__main__':
                       emission_date=date.today(),
                       details=''
                       )
+
+    receipt_created_with_builder = Receipt_creator()

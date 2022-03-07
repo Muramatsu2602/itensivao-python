@@ -2,16 +2,17 @@ class Print(object):
 
     def visit_sum(self, sum):
         print('(',  end=" ")
-        # visits left expression
+        sum.left_expression.accepts(self)
         print('+',  end=" ")
-        # visits right expression
+        sum.right_expression.accepts(self)
         print(')',  end=" ")
 
     def visit_subtraction(self, subtraction):
         print('(',  end=" ")
-        # visits left expression
+        subtraction.left_expression.accepts(self)
         print('-',  end=" ")
-        # visits right expression
+        subtraction.right_expression.accepts(self)
+
         print(')',  end=" ")
 
     def visit_number(self, number):

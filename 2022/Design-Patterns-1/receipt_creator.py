@@ -1,4 +1,5 @@
 from receipt import Receipt
+from datetime import date
 
 
 class Receipt_creator(object):
@@ -43,6 +44,8 @@ class Receipt_creator(object):
         if self.__items is None:
             raise Exception('The Items field must not be blank')
         if self.__emission_date is None:
-            raise Exception('The Emission Date field must not be blank')
+            self.__emission_date = date.today()
+        if self.__details is None:
+            self.__details = ''
 
         return Receipt(company_name=self.__company_name, cnpj=self.__cnpj, emission_date=self.__emission_date, items=self.__items, details=self.__details)

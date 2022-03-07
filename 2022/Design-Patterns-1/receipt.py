@@ -22,7 +22,7 @@ class Receipt(object):
         self.__company_name = company_name
         self.__cnpj = cnpj
         self.__emission_date = emission_date
-        if len(details) > 20:
+        if details != None and len(details) > 20:
             raise Exception('Receipt details may not exceed 20 characters')
         self.__details = details
         self.__items = items
@@ -60,8 +60,6 @@ if __name__ == '__main__':
 
     from receipt_creator import Receipt_creator
 
-
-
     # REMEMBER = optional parameters go LAST
     receipt = Receipt(cnpj='0123183102381',
                       company_name='My Company Ltd',
@@ -70,4 +68,5 @@ if __name__ == '__main__':
                       details=''
                       )
 
-    receipt_created_with_builder = Receipt_creator()
+    receipt_created_with_builder = (Receipt_creator().with_company_name(
+        'FHSA Company').with_emission_date(date.today()).with_cnpj('1237183721032').with_items(items).build())

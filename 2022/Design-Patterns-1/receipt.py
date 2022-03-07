@@ -27,6 +27,20 @@ class Receipt(object):
         self.__details = details
         self.__items = items
 
+        # here these methods are executed once a new instance of Receipt is created
+        self.__print(self)
+        self.__send_by_email(self)
+        self.__save_on_database(self)
+
+    def __print(self, receipt):
+        print('Printing receipt %s' % (receipt.cnpj))
+
+    def __send_by_email(self, receipt):
+        print('Sending the following receipt by email: %s' % (receipt.cnpj))
+
+    def __save_on_database(self, receipt):
+        print('Saving receipt on Database %s' % (receipt.cnpj))
+
     @property
     def company_name(self):
         return self.__company_name
@@ -42,6 +56,10 @@ class Receipt(object):
     @property
     def details(self):
         return self.__details
+
+    @property
+    def items(self):
+        return self.__items
 
 
 if __name__ == '__main__':

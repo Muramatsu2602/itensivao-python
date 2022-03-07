@@ -32,6 +32,10 @@ class TheNumber(object):
 
 if __name__ == '__main__':
 
+    from print import Print
+
+    print = Print()
+
     left_expression = Sum(TheNumber(10), TheNumber(20))
     right_expression = Sum(TheNumber(5), TheNumber(2))
     problem_expression = Sum(left_expression, right_expression)

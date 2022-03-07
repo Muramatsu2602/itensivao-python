@@ -18,7 +18,7 @@ class Item(object):
 
 class Receipt(object):
 
-    def __init__(self, company_name, cnpj, items, emission_date=date.today(), details=''):
+    def __init__(self, company_name, cnpj, items, emission_date=date.today(), details='', observers=[]):
         self.__company_name = company_name
         self.__cnpj = cnpj
         self.__emission_date = emission_date
@@ -27,19 +27,8 @@ class Receipt(object):
         self.__details = details
         self.__items = items
 
-        # here these methods are executed once a new instance of Receipt is created
-        self.__print(self)
-        self.__send_by_email(self)
-        self.__save_on_database(self)
-
-    def __print(self, receipt):
-        print('Printing receipt %s' % (receipt.cnpj))
-
-    def __send_by_email(self, receipt):
-        print('Sending the following receipt by email: %s' % (receipt.cnpj))
-
-    def __save_on_database(self, receipt):
-        print('Saving receipt on Database %s' % (receipt.cnpj))
+        for observer in observers:
+            observer(self)
 
     @property
     def company_name(self):
@@ -63,6 +52,8 @@ class Receipt(object):
 
 
 if __name__ == '__main__':
+    from observers import print_receipt, send_by_email, save_on_database
+    from receipt_creator import Receipt_creator
 
     items = [
         Item(
@@ -76,14 +67,14 @@ if __name__ == '__main__':
 
     ]
 
-    from receipt_creator import Receipt_creator
-
     # REMEMBER = optional parameters go LAST
     receipt = Receipt(cnpj='0123183102381',
                       company_name='My Company Ltd',
                       items=items,
                       emission_date=date.today(),
-                      details=''
+                      details='',
+                      observers=[print_receipt,
+                                 send_by_email, save_on_database]
                       )
 
     receipt_created_with_builder = (Receipt_creator().with_company_name(

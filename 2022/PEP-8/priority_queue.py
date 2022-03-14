@@ -19,8 +19,8 @@ class PriorityQueue:
             self.code += 1
 
     def update_queue(self) -> None:
-        self.resetQueue()
-        self.generateCurrentPassword()
+        self.reset_queue()
+        self.generate_current_password()
         self.queue.append(self.current_password)
 
     def call_customer(self, counter: int) -> str:

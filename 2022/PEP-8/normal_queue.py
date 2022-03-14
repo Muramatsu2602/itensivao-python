@@ -25,3 +25,17 @@ class NormalQueue:
         self.served_customers.append(current_costumer)
 
         return(f'Current costumer: {current_costumer}, please go to {counter}')
+
+    def statistics(self, day: str, agency: int, flag: str) -> str or array:
+
+        if flag != 'detail':
+            statistics = {f'{agency}-{day}': len(self.served_customers)}
+        else:
+            # creating a dictionary
+            statistics = {}
+            statistics['day'] = day
+            statistics['agency'] = agency
+            statistics['served_costumers'] = self.served_customers
+            statistics['num_served_costumers'] = len(self.served_customers)
+
+        return statistics

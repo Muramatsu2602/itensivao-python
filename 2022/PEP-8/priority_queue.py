@@ -1,6 +1,3 @@
-import statistics
-
-from pandas import array
 
 
 class PriorityQueue:
